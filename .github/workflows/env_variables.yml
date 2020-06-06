@@ -1,15 +1,15 @@
 name: ENV Variables
 on: push
 env:
-  WF_ENV: disponível para todos os jobs
+  WF_ENV: ${{secrets.WF_ENV}}
 jobs:
   log-env-job:
     runs-on: ubuntu-16.04
     env:
       JOB_ENV: disponível para todo os passo/steps
-    steps: 
+    steps:
       - name: log Env Variables
-        env: 
+        env:
           STEP_ENV: disponível sómente nesse passo/steps
         run: |
           echo "WF_ENV: ${WF_ENV}"
