@@ -9,6 +9,12 @@ jobs:
         run: |
           pwd
           ls
+      - name: Checkout project
+        uses: actions/checkout@v2
+      - name: List files
+        run: |
+          pwd
+          ls
       - name: Simple JS Actions
         id: greet
         uses: actions/hello-world-javascript-action@master
