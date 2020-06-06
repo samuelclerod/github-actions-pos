@@ -5,10 +5,14 @@ jobs:
   run-github-actions:
     runs-on: ubuntu-18.04
     steps:
+      - name: List files
+        run: |
+          pwd
+          ls
       - name: Simple JS Actions
         id: greet
         uses: actions/hello-world-javascript-action@master
         with:
           who-to-greet: "Mona the Octocat"
       - name: Log Greeting Time
-        run: echo "${{steps.greet}}"
+        run: echo "${{steps.greet.outputs.time}}"
