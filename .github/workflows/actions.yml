@@ -1,33 +1,33 @@
 name: Testing Actions Workflow
 on:
-  - push
+  push:
+    branches:
+      - master
+  pull_request:
+    types: [assigned, opened, reopened]
+
 jobs:
   run-github-actions:
     runs-on: ubuntu-18.04
+
     steps:
       - name: List files
         run: |
           pwd
           ls
+
       - name: Checkout project
-        #   uses: actions/checkout@v2
-        run: |
-          pwd
-          ls -a
-          echo $GITHUB_SHA
-          echo $GITHUB_REPOSITORY
-          echo $GITHUB_WORKSPACE
-          echo "${{github.token}}"
-          git clone git@github:$GITHUB_REPOSITORY
-          git checkout $GITHUB_SHA
+        uses: actions/checkout@v2
       - name: List files
         run: |
           pwd
           ls
+
       - name: Simple JS Actions
         id: greet
         uses: actions/hello-world-javascript-action@master
         with:
           who-to-greet: "Mona the Octocat"
+
       - name: Log Greeting Time
         run: echo "${{steps.greet.outputs.time}}"
