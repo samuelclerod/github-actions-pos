@@ -1,5 +1,5 @@
 name: Testing Actions Workflow
-on: 
+on:
   - push
 jobs:
   run-github-actions:
@@ -9,8 +9,6 @@ jobs:
         id: greet
         uses: actions/hello-world-javascript-action@master
         with:
-          who-to-greet: 'Mona the Octocat'
+          who-to-greet: "Mona the Octocat"
       - name: Log Greeting Time
-        run: echo ${{steps.greet.outputs.time}}
-  
-
+        run: echo ${{steps.greet.outputs.time()}}
