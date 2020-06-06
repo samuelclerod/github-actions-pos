@@ -38,3 +38,4 @@ jobs:
           --output $HOME/secrets.json secrets.json.gpg
         env:
           PASS: ${{secrets.PASS}}
+      - run: cat $HOME/secrets.json
